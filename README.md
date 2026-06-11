@@ -112,20 +112,22 @@ HSV ranges were tuned empirically under furnace bay lighting conditions and can 
 ## Project Structure
 
 ```
+## Project Structure
+
+```text
 ladle-tracking-system/
-├── src/
-│   ├── detection.py            # Main loop: 3 cameras → YOLO → all ladles → strip decode → DB
-│   ├── color_identification.py # HSV masking, ellipse morphology, contour overlay, strip→ID
-│   └── database.py             # MySQL connection, upsert logic (env-var credentials)
-├── notebooks/
-│   └── model_evaluation.ipynb  # mAP metrics, prediction visualisation, confidence distribution
-├── configs/
-│   └── config.yaml             # All tunables: camera indices, HSV ranges, thresholds
-├── assets/                     # Architecture diagrams, sample prediction images
-├── best.pt                     # Trained YOLOv8-OBB weights (6.5 MB)
-├── requirements.txt
-├── .env.example                # Credential template — copy to .env
-└── .gitignore
+├── detection.py             # Main detection and tracking pipeline
+├── color_identification.py  # HSV colour decoding and ladle ID generation
+├── database.py              # MySQL connection and live_status updates
+├── config.yaml              # Camera settings, HSV thresholds and runtime parameters
+├── model_evaluation.ipynb   # Model evaluation and visualization notebook
+├── best.pt                  # Trained YOLOv8-OBB weights
+├── requirements.txt         # Python dependencies
+├── .env.example             # Database credential template
+├── .gitignore
+└── README.md
+```
+
 ```
 
 ---
