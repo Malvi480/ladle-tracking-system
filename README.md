@@ -105,7 +105,7 @@ Each ladle carries 1–3 alumina rings in a vertical column. Reading top-to-bott
 
 Example: rings `[Green, Blue]` → ladle **#12**. This scheme supports IDs from 1–333 with up to 3 rings.
 
-HSV ranges were tuned empirically under furnace bay lighting conditions and can be adjusted in `configs/config.yaml` without touching source code.
+HSV ranges were tuned empirically under furnace bay lighting conditions and can be adjusted in `config.yaml` without touching source code.
 
 ---
 
@@ -163,7 +163,7 @@ cameras:
 ### 4. Run
 
 ```bash
-python src/detection.py
+python detection.py
 ```
 
 Press `q` to quit the preview window. The live feed shows:
@@ -172,7 +172,7 @@ Press `q` to quit the preview window. The live feed shows:
 - Magenta contour outlines showing which pixels triggered each colour-strip read
 - Live FPS counter (top-left of each feed)
 
-To enable CSV logging of every detection, open `src/detection.py` and set `SAVE_CSV = True` at the top of the file. Logs are saved to `detections_log.csv` in the project root.
+To enable CSV logging of every detection, open `detection.py` and set `SAVE_CSV = True` at the top of the file. Logs are saved to `detections_log.csv` in the project root.
 
 ### 5. (Optional) Run the evaluation notebook
 
@@ -181,7 +181,7 @@ To enable CSV logging of every detection, open `src/detection.py` and set `SAVE_
 unzip Ladle_detection_test_v1i_yolov8-obb.zip -d dataset/
 
 # Then open the notebook
-jupyter notebook notebooks/model_evaluation.ipynb
+jupyter notebook model_evaluation.ipynb
 ```
 
 ---
