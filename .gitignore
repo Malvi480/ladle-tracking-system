@@ -1,0 +1,34 @@
+# Credentials — NEVER commit these
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+dist/
+build/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# YOLO / training artefacts
+runs/
+*.cache
+
+# Model weights (6.5 MB — small enough to track directly)
+# If the model grows beyond ~50 MB, enable Git LFS:
+#   git lfs track "*.pt"
+# and uncomment the line below:
+# *.pt
+
+# Dataset (use the Roboflow link instead)
+*.zip
+dataset/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,57 @@
+# ============================================================
+# Ladle Tracking System — Central Configuration
+# ============================================================
+# Copy .env.example to .env and fill in DB credentials.
+# All other tunables live here.
+
+# ── System identity ──────────────────────────────────────────
+system:
+  board_id: 2          # Unique ID for this machine (stored as board_number in DB)
+
+# ── Camera indices (OpenCV VideoCapture index) ────────────────
+cameras:
+  - index: 1
+    name: "Camera 1"
+    number: 1
+  - index: 2
+    name: "Camera 2"
+    number: 2
+  - index: 3
+    name: "Camera 3"
+    number: 3
+
+# ── YOLO ─────────────────────────────────────────────────────
+model:
+  path: "best.pt"
+  target_class: "Ladle"
+  conf_threshold: 0.50
+
+# ── Color-coded alumina ring detection ───────────────────────
+# HSV ranges tuned for steel-plant lighting conditions.
+# COLOR_TO_DIGIT encodes each color as a decimal digit;
+# reading strips top-to-bottom spells out the ladle number.
+color_detection:
+  min_strip_area: 300          # px² — ignore noise contours below this
+  percentage_threshold: 25.0   # % of bounding box that must be the target color
+
+  colors:
+    Green:
+      digit: 1
+      ranges:
+        - lower: [44, 82, 0]
+          upper: [72, 255, 255]
+    Blue:
+      digit: 2
+      ranges:
+        - lower: [91, 108, 0]
+          upper: [179, 255, 255]
+    Brown:
+      digit: 3
+      ranges:
+        - lower: [0, 78, 73]
+          upper: [41, 255, 225]
+
+# ── Logging cadence ──────────────────────────────────────────
+logging:
+  db_write_interval_sec: 5     # Write detected ladle IDs to DB every N seconds
+  display_height_px: 360       # Per-feed resize height for the combined preview window
